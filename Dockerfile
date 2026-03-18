@@ -68,6 +68,7 @@ WORKDIR /app
 # Wrapper deps
 COPY package.json ./
 RUN npm install --omit=dev && npm cache clean --force
+RUN node /app/node_modules/playwright-core/cli.js install chromium
 
 # Copy built openclaw
 COPY --from=openclaw-build /openclaw /openclaw
